@@ -3,7 +3,7 @@
 namespace Tests\Helpers;
 
 use Judopay\Exception\ApiException;
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert;
 
 class AssertionHelper
 {

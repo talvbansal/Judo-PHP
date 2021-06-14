@@ -2,6 +2,7 @@
 
 namespace Tests\Base;
 
+use Judopay\Exception\ValidationError;
 use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\TokenPaymentBuilder;
@@ -20,7 +21,7 @@ abstract class TokenPaymentTests extends TestCase
      */
     abstract protected function getBuilder();
 
-    public function setUp()
+    public function setUp() : void
     {
         $builder = new CardPaymentBuilder();
         $cardPayment = $builder->setAttribute('yourConsumerReference', self::CONSUMER_REFERENCE)
@@ -56,7 +57,7 @@ abstract class TokenPaymentTests extends TestCase
 
     public function testTokenPaymentWithoutToken()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $tokenPayment = $this->getBuilder()
             ->unsetAttribute('cardToken')
@@ -67,7 +68,7 @@ abstract class TokenPaymentTests extends TestCase
 
     public function testTokenPaymentWithoutCv2AndWithoutToken()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $tokenPayment = $this->getBuilder()
             ->unsetAttribute('cardToken')
@@ -141,7 +142,7 @@ abstract class TokenPaymentTests extends TestCase
 
     public function testTokenPaymentWithoutReference()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $tokenPayment = $this->getBuilder()
             ->unsetAttribute('yourConsumerReference')
@@ -238,7 +239,7 @@ abstract class TokenPaymentTests extends TestCase
 
     public function testTokenPaymentWithoutCv2AndWithoutReference()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $tokenPayment = $this->getBuilder()
             ->unsetAttribute('yourConsumerReference')
@@ -264,7 +265,7 @@ abstract class TokenPaymentTests extends TestCase
                 409,
                 4
             );
-                $this->assertContains(
+                $this->assertStringContainsString(
                     $successfulResult['receiptId'],
                     $e->getMessage()
                 );

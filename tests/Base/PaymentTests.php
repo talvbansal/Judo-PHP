@@ -2,6 +2,7 @@
 
 namespace Tests\Base;
 
+use Judopay\Exception\ValidationError;
 use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\CardPreauthBuilder;
@@ -71,7 +72,7 @@ abstract class PaymentTests extends TestCase
 
     public function testPaymentWithoutCurrency()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $cardPayment = $this->getBuilder()
             ->setAttribute('currency', '')
@@ -99,7 +100,7 @@ abstract class PaymentTests extends TestCase
 
     public function testPaymentWithoutReference()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $cardPayment = $this->getBuilder()
             ->unsetAttribute('yourConsumerReference')
@@ -118,7 +119,7 @@ abstract class PaymentTests extends TestCase
             $cardPayment->create();
         } catch (\Exception $e) {
             AssertionHelper::assertApiExceptionWithModelErrors($e, 0, 86, 409, 4);
-            $this->assertContains($successfulResult['receiptId'], $e->getMessage());
+            $this->assertStringContainsString($successfulResult['receiptId'], $e->getMessage());
 
             return;
         }

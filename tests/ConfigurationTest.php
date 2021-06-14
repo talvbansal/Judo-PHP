@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Judopay\Exception\ValidationError;
 use PHPUnit\Framework\TestCase;
 use Tests\Helpers\ConfigHelper;
 
@@ -9,7 +10,7 @@ class ConfigurationTest extends TestCase
 {
     protected $data = array();
 
-    public function setUp()
+    public function setUp() :void
     {
         $this->data = array(
             array('', "MYTOKEN", "MYSECRET"),
@@ -41,7 +42,7 @@ class ConfigurationTest extends TestCase
 
     public function testLowApiVersion()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Partner API under v5.0.0 is abandoned');
+        $this->expectException(ValidationError::class);
 
         $config = ConfigHelper::getConfigFromList(
             array('MYJUDOID', 'MYTOKEN', 'MYSECRET'),

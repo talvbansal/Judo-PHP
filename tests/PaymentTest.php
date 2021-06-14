@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert;
 use Tests\Base\ThreeDSecureTwoTests;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\GetTransactionBuilder;

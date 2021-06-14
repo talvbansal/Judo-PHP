@@ -5,7 +5,9 @@ vendor
 composer.phar
 *.log
 .idea
+.env
 
 php-cs-fixer.phar
 /composer.lock
 .scannerwork
+.phpunit.result.cache

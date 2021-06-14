@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Judopay\Exception\ValidationError;
 use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Helpers\ConfigHelper;
@@ -10,7 +11,7 @@ class CardDetailsTest extends TestCase
 {
     public function testPaymentWithMissingCardNumber()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $config = ConfigHelper::getBaseConfig();
 
@@ -23,7 +24,7 @@ class CardDetailsTest extends TestCase
 
     public function testPaymentWithMissingCv2()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $config = ConfigHelper::getBaseConfig();
 
@@ -37,7 +38,7 @@ class CardDetailsTest extends TestCase
 
     public function testPaymentWithMissingExpiryDate()
     {
-        $this->setExpectedException('\Judopay\Exception\ValidationError', 'Missing required fields');
+        $this->expectException(ValidationError::class);
 
         $config = ConfigHelper::getBaseConfig();
 
