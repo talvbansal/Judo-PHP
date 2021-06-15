@@ -59,12 +59,8 @@ class Model
      **/
     public function getResponseArray($guzzleResponse)
     {
-        // Read the Psr7\Stream
-        $responseBody = $guzzleResponse->getBody();
-        $responseBodyAsString = $responseBody->getContents();
-
-        // Parse the response to Json
-        return json_decode($responseBodyAsString, true);
+        // Parse the response to array
+        return json_decode($guzzleResponse->getBody(), true);
     }
 
     /**
