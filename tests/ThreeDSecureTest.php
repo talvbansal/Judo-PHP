@@ -8,6 +8,9 @@ use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
 use Judopay\Exception\ApiException as ApiException;
 
+/**
+ * @group threedsecure
+ */
 class ThreeDSecureTest extends TestCase
 {
     protected function getBuilder()

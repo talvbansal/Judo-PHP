@@ -29,6 +29,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         return new CompleteThreeDSecureTwoBuilder($receiptId);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoInvalidAuthenticationSource()
     {
         // Build a threeDSecureTwo payment with an invalid attribute
@@ -53,6 +56,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         }
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoInvalidMethodCompletion()
     {
         // Build a threeDSecureTwo payment with an invalid attribute
@@ -77,6 +83,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         }
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoRequiresDeviceDetailsCheck()
     {
         // Build a threeDSecureTwo payment
@@ -103,6 +112,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         AssertionHelper::assertRequiresThreeDSecureTwoDeviceDetails($paymentResult);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoResumeTransaction()
     {
         // Build a threeDSecureTwo payment
@@ -150,6 +162,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
     /*
      * This cannot run as a full automated test because of a step involving a web browser
+     * @group threedsecure
      */
     public function testPaymentWithThreedSecureTwoCompleteTransaction()
     {
@@ -174,6 +187,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         Assert::assertNull($completeResult);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreeDSecureTwoNoDeviceDetailsOrChallenge()
     {
         // Build a threeDSecureTwo payment

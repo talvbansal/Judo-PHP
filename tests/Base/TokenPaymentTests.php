@@ -153,6 +153,9 @@ abstract class TokenPaymentTests extends TestCase
         $tokenPayment->create();
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testTokenPaymentWithoutCv2()
     {
         $tokenPayment = $this->getBuilder()
@@ -204,6 +207,9 @@ abstract class TokenPaymentTests extends TestCase
         $this->fail('An expected ApiException has not been raised.');
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testTokenPaymentWithoutCv2AndWithoutCurrency()
     {
         $tokenPayment = $this->getBuilder()
