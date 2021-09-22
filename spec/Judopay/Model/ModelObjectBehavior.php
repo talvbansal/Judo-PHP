@@ -30,7 +30,7 @@ abstract class ModelObjectBehavior extends ObjectBehavior
         return $request;
     }
 
-    public function getMatchers()
+    public function getMatchers(): array
     {
         return array(
             'contain' => function ($subject, $key) {

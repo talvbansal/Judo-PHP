@@ -3,7 +3,7 @@ namespace Judopay\Model\Inner;
 
 class PrimaryAccountDetails extends TransmittedField
 {
-    static protected $fieldName = 'primaryAccountDetails';
+    protected static $fieldName = 'primaryAccountDetails';
     protected $requiredAttributes
         = array(
             'name',

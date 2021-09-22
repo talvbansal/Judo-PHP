@@ -37,7 +37,7 @@ class RequestSpec extends ObjectBehavior
         Assert::assertEquals('Bearer '.$oauthAccessToken, $request->getHeader('Authorization')[0]);
     }
 
-    public function getMatchers()
+    public function getMatchers(): array
     {
         return array(
             'startWith' => function ($subject, $key) {

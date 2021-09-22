@@ -34,7 +34,7 @@ class JudopaySpec extends ObjectBehavior
         );
     }
 
-    public function getMatchers()
+    public function getMatchers(): array
     {
         return array(
             'notHaveKey' => function ($subject, $key) {

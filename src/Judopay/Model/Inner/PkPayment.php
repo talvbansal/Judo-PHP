@@ -4,7 +4,7 @@ namespace Judopay\Model\Inner;
 
 class PkPayment extends TransmittedField
 {
-    static protected $fieldName = 'pkPayment';
+    protected static $fieldName = 'pkPayment';
     protected $requiredAttributes
         = array(
             'token',

@@ -27,7 +27,7 @@
     },
     "require-dev": {
         "phpspec/phpspec": "^7.0",
-        "squizlabs/php_codesniffer": "^2.0",
+        "squizlabs/php_codesniffer": "^4.0",
         "phpunit/phpunit": "^9.5",
         "symfony/finder": "^5.0",
         "symfony/console": "^5.0",
