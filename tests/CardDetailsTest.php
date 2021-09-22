@@ -3,7 +3,6 @@
 namespace Tests;
 
 use Judopay\Exception\ValidationError;
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Helpers\ConfigHelper;
 

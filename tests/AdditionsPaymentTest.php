@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\EncryptDetailsBuilder;
 use Tests\Builders\OneUseTokenPaymentBuilder;
 use Tests\Builders\OneUseTokenPreauthBuilder;

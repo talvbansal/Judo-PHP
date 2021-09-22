@@ -5,7 +5,6 @@ namespace Tests\Base;
 use GuzzleHttp\Exception\BadResponseException;
 use Judopay\Exception\ApiException;
 use Judopay\Exception\ValidationError;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Assert;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\CompleteThreeDSecureTwoBuilder;

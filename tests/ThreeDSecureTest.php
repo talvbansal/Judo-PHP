@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\CompleteThreeDSecureBuilder;
 use Tests\Helpers\AssertionHelper;

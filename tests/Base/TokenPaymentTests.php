@@ -3,12 +3,12 @@
 namespace Tests\Base;
 
 use Judopay\Exception\ValidationError;
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\TokenPaymentBuilder;
 use Tests\Builders\TokenPreauthBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
+use Tests\TestCase;
 
 abstract class TokenPaymentTests extends TestCase
 {
@@ -23,6 +23,8 @@ abstract class TokenPaymentTests extends TestCase
 
     public function setUp() : void
     {
+        parent::setUp();
+
         $builder = new CardPaymentBuilder();
         $cardPayment = $builder->setAttribute('yourConsumerReference', self::CONSUMER_REFERENCE)
             ->build(ConfigHelper::getBaseConfig());

@@ -3,11 +3,11 @@
 namespace Tests\Base;
 
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\RefundBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
+use Tests\TestCase;
 
 class RefundTest extends TestCase
 {

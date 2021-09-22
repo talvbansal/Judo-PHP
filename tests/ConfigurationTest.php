@@ -3,7 +3,6 @@
 namespace Tests;
 
 use Judopay\Exception\ValidationError;
-use PHPUnit\Framework\TestCase;
 use Tests\Helpers\ConfigHelper;
 
 class ConfigurationTest extends TestCase
@@ -12,6 +11,8 @@ class ConfigurationTest extends TestCase
 
     public function setUp() :void
     {
+        parent::setUp();
+
         $this->data = array(
             array('', "MYTOKEN", "MYSECRET"),
             array(null, "MYTOKEN", "MYSECRET"),

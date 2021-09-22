@@ -34,7 +34,8 @@
         "symfony/process": "^5.0",
         "symfony/yaml": "^5.0",
         "phpdocumentor/reflection-docblock": "^5.0",
-        "friends-of-phpspec/phpspec-expect": "^4.0"
+        "friends-of-phpspec/phpspec-expect": "^4.0",
+        "vlucas/phpdotenv": "^5.3"
     },
     "autoload": {
         "psr-4": {

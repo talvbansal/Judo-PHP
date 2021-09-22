@@ -2,12 +2,12 @@
 
 namespace Tests\Base;
 
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\CardPreauthBuilder;
 use Tests\Builders\VoidTransactionBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
+use Tests\TestCase;
 
 class VoidTest extends TestCase
 {
