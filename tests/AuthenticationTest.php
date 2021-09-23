@@ -6,7 +6,7 @@ use Tests\Builders\CardPaymentBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
 
-class AuthenticationTest extends TestCase
+class AuthenticationTest extends JudopayTestCase
 {
     public function testPaymentWithInvalidJudoId()
     {

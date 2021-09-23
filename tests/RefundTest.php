@@ -7,9 +7,9 @@ use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\RefundBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
-use Tests\TestCase;
+use Tests\JudopayTestCase;
 
-class RefundTest extends TestCase
+class RefundTest extends JudopayTestCase
 {
     protected function makePayment($amount = 1.02)
     {

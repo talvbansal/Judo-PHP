@@ -3,12 +3,11 @@
 namespace Tests;
 
 use Tests\Builders\CardPaymentBuilder;
-use Tests\Builders\GetTransactionBuilder;
 use Tests\Builders\WebPayments\PaymentBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
 
-class WebPaymentTest extends TestCase
+class WebPaymentTest extends JudopayTestCase
 {
     protected function getBuilder()
     {

@@ -5,7 +5,7 @@ namespace Tests;
 use Judopay\Exception\ValidationError;
 use Tests\Helpers\ConfigHelper;
 
-class ConfigurationTest extends TestCase
+class ConfigurationTest extends JudopayTestCase
 {
     protected $data = array();
 

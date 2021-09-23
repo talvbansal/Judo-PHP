@@ -8,9 +8,9 @@ use Tests\Builders\TokenPaymentBuilder;
 use Tests\Builders\TokenPreauthBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
-use Tests\TestCase;
+use Tests\JudopayTestCase;
 
-abstract class TokenPaymentTests extends TestCase
+abstract class TokenPaymentTests extends JudopayTestCase
 {
     const CONSUMER_REFERENCE = '1234512345';
     protected $cardToken;
@@ -46,6 +46,9 @@ abstract class TokenPaymentTests extends TestCase
         AssertionHelper::assertSuccessfulPayment($result);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testDeclinedTokenPayment()
     {
         $tokenPayment = $this->getBuilder()

@@ -7,9 +7,9 @@ use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\CardPreauthBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
-use Tests\TestCase;
+use Tests\JudopayTestCase;
 
-abstract class PaymentTests extends TestCase
+abstract class PaymentTests extends JudopayTestCase
 {
     /**
      * @return CardPaymentBuilder|CardPreauthBuilder
@@ -26,11 +26,15 @@ abstract class PaymentTests extends TestCase
         AssertionHelper::assertAuthCodeAvailable($result);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testDeclinedPayment()
     {
         $cardPayment = $this->getBuilder()
             ->setType(CardPaymentBuilder::INVALID_VISA_CARD)
             ->build(ConfigHelper::getBaseConfig());
+
         $result = $cardPayment->create();
 
         AssertionHelper::assertDeclinedPayment($result);

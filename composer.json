@@ -22,7 +22,6 @@
         "psr/log": "^1.0",
         "ext-curl": "*",
         "guzzlehttp/guzzle": "^7.3",
-        "illuminate/support": "^8.61",
         "illuminate/http": "^8.61"
     },
     "require-dev": {
@@ -33,7 +32,8 @@
         "symfony/process": "^5.0",
         "symfony/yaml": "^5.0",
         "phpdocumentor/reflection-docblock": "^5.0",
-        "vlucas/phpdotenv": "^5.3"
+        "laravel/framework": "^8.61",
+        "orchestra/testbench": "^6.21"
     },
     "autoload": {
         "psr-4": {

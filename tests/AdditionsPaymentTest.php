@@ -11,7 +11,7 @@ use Tests\Builders\CheckEncryptedCardBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
 
-class AdditionsPaymentTest extends TestCase
+class AdditionsPaymentTest extends JudopayTestCase
 {
     public function testOneUseTokenPayment()
     {

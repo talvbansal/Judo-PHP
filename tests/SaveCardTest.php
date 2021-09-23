@@ -6,7 +6,7 @@ use Tests\Builders\SaveCardBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
 
-abstract class SaveCardTests extends TestCase
+abstract class SaveCardTests extends JudopayTestCase
 {
     public function testValidSaveCard()
     {

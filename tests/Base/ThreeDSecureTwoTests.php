@@ -2,7 +2,7 @@
 
 namespace Tests\Base;
 
-use GuzzleHttp\Exception\BadResponseException;
+use Illuminate\Http\Client\RequestException;
 use Judopay\Exception\ApiException;
 use Judopay\Exception\ValidationError;
 use PHPUnit\Framework\Assert;
@@ -104,7 +104,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -133,7 +133,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -152,7 +152,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $resumeResult = $resumeThreeDSecureTwo->update();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -208,7 +208,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 

@@ -31,6 +31,9 @@ class RegisterCardTest extends ThreeDSecureTwoTests
         $this->fail('An expected ApiException has not been raised.');
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentChangedAmount()
     {
         // When we try to change the amount
