@@ -26,7 +26,6 @@
         "illuminate/http": "^8.61"
     },
     "require-dev": {
-        "phpspec/phpspec": "^7.0",
         "squizlabs/php_codesniffer": "^4.0",
         "phpunit/phpunit": "^9.5",
         "symfony/finder": "^5.0",
@@ -34,7 +33,6 @@
         "symfony/process": "^5.0",
         "symfony/yaml": "^5.0",
         "phpdocumentor/reflection-docblock": "^5.0",
-        "friends-of-phpspec/phpspec-expect": "^4.0",
         "vlucas/phpdotenv": "^5.3"
     },
     "autoload": {
