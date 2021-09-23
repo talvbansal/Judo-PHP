@@ -3,7 +3,7 @@ namespace Judopay\Model\Inner;
 
 class GooglePayWallet extends TransmittedField
 {
-    static protected $fieldName = 'googlePayWallet';
+    protected static $fieldName = 'googlePayWallet';
     protected $requiredAttributes
         = array(
             'cardNetwork',

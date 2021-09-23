@@ -2,8 +2,8 @@
 
 namespace Judopay;
 
+use Illuminate\Http\Client\Response;
 use Judopay\Exception\ValidationError;
-use GuzzleHttp\Psr7\Response;
 
 /**
  * Base model class
@@ -53,14 +53,12 @@ class Model
     }
 
     /**
-     * Transforms the Guzzle Response to an Array
-     * @param Response $guzzleResponse
+     * Transforms the Http Response to an Array
      * @return array
      **/
-    public function getResponseArray($guzzleResponse)
+    public function getResponseArray(Response $response)
     {
-        // Parse the response to array
-        return json_decode($guzzleResponse->getBody(), true);
+        return $response->json();
     }
 
     /**

@@ -3,11 +3,10 @@
 namespace Tests;
 
 use Judopay\Exception\ValidationError;
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Helpers\ConfigHelper;
 
-class CardDetailsTest extends TestCase
+class CardDetailsTest extends JudopayTestCase
 {
     public function testPaymentWithMissingCardNumber()
     {

@@ -2,14 +2,16 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\CompleteThreeDSecureBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
-use Judopay\Exception\ApiException as ApiException;
+use Judopay\Exception\ApiException;
 
-class ThreeDSecureTest extends TestCase
+/**
+ * @group threedsecure
+ */
+class ThreeDSecureTest extends JudopayTestCase
 {
     protected function getBuilder()
     {

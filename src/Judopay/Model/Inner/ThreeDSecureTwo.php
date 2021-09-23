@@ -5,7 +5,7 @@ use Judopay\DataType;
 
 class ThreeDSecureTwo extends TransmittedField
 {
-    static protected $fieldName = 'threeDSecure';
+    protected static $fieldName = 'threeDSecure';
 
     protected $attributes
         = array(

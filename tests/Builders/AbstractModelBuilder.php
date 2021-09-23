@@ -2,7 +2,6 @@
 
 namespace Tests\Builders;
 
-use Judopay\Client;
 use Judopay\Configuration;
 use Judopay\Model;
 use Judopay\Request;
@@ -29,14 +28,6 @@ abstract class AbstractModelBuilder
         // Token - Secret - JudoId part of the configuration
         $this->compile();
         $request = new Request($configuration ?: new Configuration());
-
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => $configuration->get("endpointUrl"),
-            'verify' =>  true
-        ]);
-
-        $request->setClient($client);
 
         $modelName = '\Judopay\Model\\'.substr(get_class($this), 15, -7);
 

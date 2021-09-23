@@ -3,14 +3,14 @@
 namespace Tests\Base;
 
 use Judopay\Exception\ValidationError;
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\TokenPaymentBuilder;
 use Tests\Builders\TokenPreauthBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
+use Tests\JudopayTestCase;
 
-abstract class TokenPaymentTests extends TestCase
+abstract class TokenPaymentTests extends JudopayTestCase
 {
     const CONSUMER_REFERENCE = '1234512345';
     protected $cardToken;
@@ -23,6 +23,8 @@ abstract class TokenPaymentTests extends TestCase
 
     public function setUp() : void
     {
+        parent::setUp();
+
         $builder = new CardPaymentBuilder();
         $cardPayment = $builder->setAttribute('yourConsumerReference', self::CONSUMER_REFERENCE)
             ->build(ConfigHelper::getBaseConfig());
@@ -44,6 +46,9 @@ abstract class TokenPaymentTests extends TestCase
         AssertionHelper::assertSuccessfulPayment($result);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testDeclinedTokenPayment()
     {
         $tokenPayment = $this->getBuilder()
@@ -151,6 +156,9 @@ abstract class TokenPaymentTests extends TestCase
         $tokenPayment->create();
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testTokenPaymentWithoutCv2()
     {
         $tokenPayment = $this->getBuilder()
@@ -202,6 +210,9 @@ abstract class TokenPaymentTests extends TestCase
         $this->fail('An expected ApiException has not been raised.');
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testTokenPaymentWithoutCv2AndWithoutCurrency()
     {
         $tokenPayment = $this->getBuilder()

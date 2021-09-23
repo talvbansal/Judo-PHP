@@ -3,13 +3,13 @@
 namespace Tests\Base;
 
 use PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\RefundBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
+use Tests\JudopayTestCase;
 
-class RefundTest extends TestCase
+class RefundTest extends JudopayTestCase
 {
     protected function makePayment($amount = 1.02)
     {

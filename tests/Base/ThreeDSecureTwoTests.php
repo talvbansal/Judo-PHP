@@ -2,10 +2,9 @@
 
 namespace Tests\Base;
 
-use GuzzleHttp\Exception\BadResponseException;
+use Illuminate\Http\Client\RequestException;
 use Judopay\Exception\ApiException;
 use Judopay\Exception\ValidationError;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Assert;
 use Tests\Builders\CardPaymentBuilder;
 use Tests\Builders\CompleteThreeDSecureTwoBuilder;
@@ -30,6 +29,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         return new CompleteThreeDSecureTwoBuilder($receiptId);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoInvalidAuthenticationSource()
     {
         // Build a threeDSecureTwo payment with an invalid attribute
@@ -54,6 +56,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         }
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoInvalidMethodCompletion()
     {
         // Build a threeDSecureTwo payment with an invalid attribute
@@ -78,6 +83,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         }
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoRequiresDeviceDetailsCheck()
     {
         // Build a threeDSecureTwo payment
@@ -96,7 +104,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -104,6 +112,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         AssertionHelper::assertRequiresThreeDSecureTwoDeviceDetails($paymentResult);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoResumeTransaction()
     {
         // Build a threeDSecureTwo payment
@@ -122,7 +133,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -141,7 +152,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $resumeResult = $resumeThreeDSecureTwo->update();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -149,6 +160,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         AssertionHelper::assertRequiresThreeDSecureTwoChallengeCompletion($resumeResult);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoResumeTransactionNoCv2()
     {
         // Build a threeDSecureTwo payment
@@ -167,7 +181,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -185,7 +199,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         try {
             $resumeResult = $resumeThreeDSecureTwo->update();
             $this->fail('The request was expected to raise an exception.'); // We do not expect any exception
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             // We do not expect any model exception because CV2 is not a mandatory request parameter
             $this->fail('The request was expected to raise an ApiException.');
         } catch (ApiException $e) {
@@ -197,6 +211,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
     /*
      * This cannot run as a full automated test because of a step involving a web browser
+     * @group threedsecure
      */
     public function testPaymentWithThreedSecureTwoCompleteTransaction()
     {
@@ -221,6 +236,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         Assert::assertNull($completeResult);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreeDSecureTwoNoDeviceDetailsOrChallenge()
     {
         // Build a threeDSecureTwo payment
@@ -239,7 +257,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 

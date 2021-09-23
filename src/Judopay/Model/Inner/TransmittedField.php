@@ -10,7 +10,7 @@ abstract class TransmittedField
     const ERROR_MESSAGE_CORRUPTED_OBJECT
         = 'You passed wrong value to the %1$s. Please pass array, json-encoded string or %1$s object';
     /** @var  string Field name and wrapper */
-    static protected $fieldName;
+    protected static $fieldName;
     /** @var array Field data */
     protected $data = array();
     /** @var array Attributes that must be present in field */

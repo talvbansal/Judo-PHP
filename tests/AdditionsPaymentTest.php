@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
 use Tests\Builders\EncryptDetailsBuilder;
 use Tests\Builders\OneUseTokenPaymentBuilder;
 use Tests\Builders\OneUseTokenPreauthBuilder;
@@ -12,7 +11,7 @@ use Tests\Builders\CheckEncryptedCardBuilder;
 use Tests\Helpers\AssertionHelper;
 use Tests\Helpers\ConfigHelper;
 
-class AdditionsPaymentTest extends TestCase
+class AdditionsPaymentTest extends JudopayTestCase
 {
     public function testOneUseTokenPayment()
     {

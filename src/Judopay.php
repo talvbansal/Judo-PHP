@@ -2,7 +2,6 @@
 
 use Judopay\Configuration;
 use Pimple\Container;
-use Judopay\Client;
 use Judopay\Request;
 
 /**
@@ -36,20 +35,7 @@ class Judopay
         // Create request factory
         $this->container['request'] = $this->container->factory(
             function ($c) {
-                /** @var Configuration $configuration */
-                $configuration = $c['configuration'];
-                $request = new Request($configuration);
-
-                // The client is now immutable and needs all the options on creation
-                $client = new Client(array_filter([
-                    'base_uri' => $configuration->get("endpointUrl"), // Base URI is used with relative requests
-                    'verify' => true,
-                    'handler' => $configuration->get("clientHandler") ?? null,
-                ]));
-
-                $request->setClient($client);
-
-                return $request;
+                return new Request($c['configuration']);
             }
         );
     }
