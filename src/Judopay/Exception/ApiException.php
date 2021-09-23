@@ -2,7 +2,7 @@
 
 namespace Judopay\Exception;
 
-use GuzzleHttp\Exception\BadResponseException;
+use Illuminate\Http\Client\RequestException;
 use Judopay\Helper\ArrayHelper;
 use RuntimeException;
 
@@ -24,21 +24,14 @@ class ApiException extends RuntimeException
 
     /**
      * Factory method
-     * @param BadResponseException $exception
      * @return static
      */
-    public static function factory($exception)
+    public static function factory(RequestException $exception)
     {
-        $response = $exception->getResponse();
-        $responseBody= $response->getBody();
-
-        // Read the Psr7\Stream
-        $responseBodyAsString = $responseBody->getContents();
-
         $statusCode = $exception->getCode();
 
         // Parse the response in an array
-        $parsedBody = json_decode($responseBodyAsString, true);
+        $parsedBody = $exception->response->json();
 
         $category = ArrayHelper::get(
             $parsedBody,

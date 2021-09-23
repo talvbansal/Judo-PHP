@@ -2,27 +2,20 @@
 
 namespace Judopay;
 
-use GuzzleHttp\Exception\BadResponseException;
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Http;
 use Judopay\Exception\ApiException;
 
 class Request
 {
     /** @var Configuration */
     protected $configuration;
-    /** @var  Client */
-    protected $client;
 
     public function __construct(Configuration $configuration)
     {
         $this->configuration = $configuration;
-    }
-
-    public function setClient(Client $client)
-    {
-        $this->client = $client;
     }
 
     /**
@@ -42,81 +35,56 @@ class Request
 
     /**
      * Make a GET request to the specified resource path
-     * @param string $resourcePath
      * @throws ApiException
-     * @return Response
      */
-    public function get($resourcePath)
+    public function get(string $resourcePath): Response
     {
-        $headers = $this->getHeaders();
         try {
-            $guzzleResponse = $this->client->request(
-                'GET',
-                $resourcePath,
-                [
-                    'headers'       => $headers
-                ]
-            );
-        } catch (BadResponseException $e) {
+            return Http::baseUrl($this->configuration->get('endpointUrl'))
+                ->withHeaders($this->getHeaders())
+                ->get($resourcePath)
+                ->throw();
+        } catch (RequestException $e) {
             throw ApiException::factory($e);
         } catch (GuzzleException $e) {
             throw new ApiException($e->getMessage());
         }
-
-        return $guzzleResponse;
     }
 
     /**
      * Make a POST request to the specified resource path and the provided data
-     * @param string $resourcePath
-     * @param array $data
-     * @return Response
+     * @throws ApiException
      */
-    public function post($resourcePath, $data)
+    public function post(string $resourcePath, array $data = []): Response
     {
-        $headers = $this->getHeaders();
         try {
-            $guzzleResponse = $this->client->request(
-                'POST',
-                $resourcePath,
-                [
-                    'headers'   => $headers,
-                    'json'      => $data
-                ]
-            );
-        } catch (BadResponseException $e) {
+            return Http::baseUrl($this->configuration->get('endpointUrl'))
+                ->withHeaders($this->getHeaders())
+                ->post($resourcePath, $data)
+                ->throw();
+        } catch (RequestException $e) {
             throw ApiException::factory($e);
         } catch (GuzzleException $e) {
             throw new ApiException($e->getMessage());
         }
-
-        return $guzzleResponse;
     }
 
     /**
      * Make a PUT request to the specified resource path and the provided data
-     * @param string $resourcePath
-     * @param array $data
-     * @return Response
+     * @throws ApiException
      */
-    public function put($resourcePath, $data)
+    public function put(string $resourcePath, array $data = []): Response
     {
-        $headers = $this->getHeaders();
         try {
-            $guzzleResponse = $this->client->request(
-                'PUT',
-                $resourcePath,
-                [
-                    'headers'   => $headers,
-                    'json'      => $data
-                ]
-            );
-        } catch (BadResponseException $e) {
+            return Http::baseUrl($this->configuration->get('endpointUrl'))
+                ->withHeaders($this->getHeaders())
+                ->put($resourcePath, $data)
+                ->throw();
+        } catch (RequestException $e) {
             throw ApiException::factory($e);
         } catch (GuzzleException $e) {
             throw new ApiException($e->getMessage());
         }
-        return $guzzleResponse;
     }
 
     /*

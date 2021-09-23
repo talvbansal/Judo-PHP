@@ -24,7 +24,6 @@ class Configuration
         self::USE_PRODUCTION,
         'logger',
         'httpLogFormat',
-        'clientHandler',
     );
 
     public function __construct($settings = null)

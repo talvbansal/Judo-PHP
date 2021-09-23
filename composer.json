@@ -18,12 +18,11 @@
     "repositories": [],
     "require": {
         "php": "^8.0",
-        "guzzlehttp/guzzle": "^7.0",
         "pimple/pimple": "^3.0",
         "psr/log": "^1.0",
-        "ext-openssl": ">=0.0.0",
-        "ext-json": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "laravel/framework": "^8.61",
+        "guzzlehttp/guzzle": "^7.3"
     },
     "require-dev": {
         "phpspec/phpspec": "^7.0",
