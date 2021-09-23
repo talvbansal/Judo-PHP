@@ -18,16 +18,9 @@ abstract class ModelObjectBehavior extends ObjectBehavior
 
     protected function concoctRequest($fixtureFile)
     {
-        $request = new Request($this->configuration);
-
-        $mockClient = SpecHelper::getMockResponseClientFromFixture(
-            200,
-            $fixtureFile
-        );
-
-        $request->setClient($mockClient);
-
-        return $request;
+        SpecHelper::getFixtureResponse(200, $fixtureFile);
+        
+        return new Request($this->configuration);
     }
 
     public function getMatchers(): array

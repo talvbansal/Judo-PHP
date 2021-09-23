@@ -21,8 +21,9 @@
         "pimple/pimple": "^3.0",
         "psr/log": "^1.0",
         "ext-curl": "*",
-        "laravel/framework": "^8.61",
-        "guzzlehttp/guzzle": "^7.3"
+        "guzzlehttp/guzzle": "^7.3",
+        "illuminate/support": "^8.61",
+        "illuminate/http": "^8.61"
     },
     "require-dev": {
         "phpspec/phpspec": "^7.0",

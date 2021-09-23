@@ -2,11 +2,9 @@
 
 namespace spec\Judopay;
 
-use GuzzleHttp\Psr7\Request;
 use PHPUnit\Framework\Assert;
 use spec\SpecHelper;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class RequestSpec extends ObjectBehavior
 {
@@ -27,14 +25,9 @@ class RequestSpec extends ObjectBehavior
         $this->beConstructedWith($config);
 
         $headers = $this->getHeaders();
-        $request = new Request(
-            'get',
-            'http://example.com',
-            $headers->getWrappedObject()
-        );
 
         // Make sure the Authorization header is correct
-        Assert::assertEquals('Bearer '.$oauthAccessToken, $request->getHeader('Authorization')[0]);
+        Assert::assertEquals('Bearer '.$oauthAccessToken, $headers->getWrappedObject()['Authorization']);
     }
 
     public function getMatchers(): array
