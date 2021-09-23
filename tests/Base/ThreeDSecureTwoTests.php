@@ -160,6 +160,9 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         AssertionHelper::assertRequiresThreeDSecureTwoChallengeCompletion($resumeResult);
     }
 
+    /**
+     * @group threedsecure
+     */
     public function testPaymentWithThreedSecureTwoResumeTransactionNoCv2()
     {
         // Build a threeDSecureTwo payment
@@ -178,7 +181,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
 
         try {
             $paymentResult = $cardPayment->create();
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             $this->fail('The request was expected to be successful.'); // We do not expect any exception
         }
 
@@ -196,7 +199,7 @@ abstract class ThreeDSecureTwoTests extends PaymentTests
         try {
             $resumeResult = $resumeThreeDSecureTwo->update();
             $this->fail('The request was expected to raise an exception.'); // We do not expect any exception
-        } catch (BadResponseException $e) {
+        } catch (RequestException $e) {
             // We do not expect any model exception because CV2 is not a mandatory request parameter
             $this->fail('The request was expected to raise an ApiException.');
         } catch (ApiException $e) {
